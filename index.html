@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Consulting Work Management</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+
+      background: #0b0f19;
+
+      color: white;
+
+      font-family: Arial, sans-serif;
+
+    }
+
+    .glass {
+
+      background: rgba(255, 255, 255, 0.05);
+
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+    }
+
+    input,
+    textarea,
+    select {
+
+      background: rgba(255, 255, 255, 0.04);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      color: white;
+
+      transition: 0.3s ease;
+
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+
+      color: #94a3b8;
+
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+
+      outline: none;
+
+      border-color: #eaf220;
+
+      box-shadow: 0 0 0 3px rgba(234, 242, 32, 0.15);
+
+    }
+
+    select option {
+
+      color: black;
+
+    }
+
+    .loader {
+
+      border: 3px solid rgba(0, 0, 0, 0.15);
+
+      border-top: 3px solid black;
+
+      border-radius: 50%;
+
+      width: 18px;
+
+      height: 18px;
+
+      animation: spin 0.7s linear infinite;
+
+    }
+
+    @keyframes spin {
+
+      100% {
+
+        transform: rotate(360deg);
+
+      }
+
+    }
+  </style>
+
+</head>
+
+<body class="min-h-screen p-4 md:p-8">
+
+  <div class="max-w-6xl mx-auto">
+
+    <!-- HEADER -->
+    <div class="mb-8">
+
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+
+        Consulting Work Management
+
+      </h1>
+
+      <p class="text-slate-400 mt-3 text-sm md:text-base">
+
+        Client Meeting & Follow-up Tracker
+
+      </p>
+
+    </div>
+
+
+
+    <!-- FORM -->
+    <form id="consultingForm" class="glass rounded-3xl p-5 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- SERIAL -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Serial No
+
+        </label>
+
+        <input type="number" name="sno" readonly class="w-full p-3 rounded-xl opacity-70 cursor-not-allowed" />
+
+      </div>
+
+
+
+      <!-- CATEGORY -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Category Of Business
+
+        </label>
+
+        <input type="text" name="category" placeholder="Restaurant / IT / Fashion" required
+          class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- CLIENT -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Client Name
+
+        </label>
+
+        <input type="text" name="clientname" placeholder="Company Name" required class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- DOC -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          DOC
+
+        </label>
+
+        <input type="date" name="doc" required class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- TOC -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          TOC
+
+        </label>
+
+        <input type="time" name="toc" required class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- MEET AGAIN -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Time To Meet Again
+
+        </label>
+
+        <input type="text" name="meetagain" placeholder="Friday - 4PM" class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- STATUS -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Status
+
+        </label>
+
+        <select name="status" required class="w-full p-3 rounded-xl">
+
+          <option value="">Select Status</option>
+
+          <option>Quotation Provided</option>
+
+          <option>Meeting Fixed</option>
+
+          <option>Future Discussion</option>
+
+          <option>Not Reachable</option>
+
+          <option>Not Interested</option>
+
+        </select>
+
+      </div>
+
+
+
+      <!-- LOCATION -->
+      <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Location
+
+        </label>
+
+        <input type="text" name="location" placeholder="Erode" required class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- MAP -->
+      <div class="md:col-span-2">
+
+        <label class="block mb-2 font-semibold">
+
+          Google Map Link
+
+        </label>
+
+        <input type="url" name="map" placeholder="Paste Google Maps URL" class="w-full p-3 rounded-xl" />
+
+      </div>
+
+
+
+      <!-- DESCRIPTION -->
+      <div class="md:col-span-2">
+
+        <label class="block mb-2 font-semibold">
+
+          Description
+
+        </label>
+
+        <textarea name="description" rows="5" placeholder="Client requirements, meeting details..."
+          class="w-full p-3 rounded-xl"></textarea>
+
+      </div>
+
+
+
+      <!-- BUTTON -->
+      <div class="md:col-span-2">
+
+        <button type="submit" id="submitBtn"
+          class="w-full bg-[#eaf220] hover:opacity-90 text-black transition-all p-4 rounded-xl font-bold text-lg flex justify-center items-center gap-3">
+
+          <span id="btnText">
+
+            Submit Data
+
+          </span>
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+
+  <!-- POPUP -->
+  <div id="popup" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4">
+
+    <div class="bg-[#111827] border border-white/10 rounded-3xl p-6 max-w-md w-full text-center">
+
+      <div id="popupIcon" class="text-5xl mb-4">
+      </div>
+
+      <h2 id="popupTitle" class="text-2xl font-bold mb-3">
+      </h2>
+
+      <p id="popupMessage" class="text-slate-300 leading-relaxed">
+      </p>
+
+      <button onclick="closePopup()" class="mt-6 bg-[#eaf220] text-black px-6 py-3 rounded-xl font-bold w-full">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    // =====================================
+    // GOOGLE APPS SCRIPT URL
+    // =====================================
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlf1slJQLwnGSCYDixByXYPj24fwHEuMZz5U5t4jiwfo-t0hRp2js6VGMs2XTKKU_8nA/exec";
+
+
+
+    // =====================================
+    // ELEMENTS
+    // =====================================
+
+    const form = document.getElementById("consultingForm");
+
+    const submitBtn = document.getElementById("submitBtn");
+
+    const btnText = document.getElementById("btnText");
+
+    const serialInput = document.querySelector('[name="sno"]');
+
+
+
+    // =====================================
+    // POPUP
+    // =====================================
+
+    function showPopup(type, title, message) {
+
+      const popup = document.getElementById("popup");
+
+      const popupTitle = document.getElementById("popupTitle");
+
+      const popupMessage = document.getElementById("popupMessage");
+
+      const popupIcon = document.getElementById("popupIcon");
+
+
+
+      popup.classList.remove("hidden");
+
+      popup.classList.add("flex");
+
+
+
+      popupTitle.innerText = title;
+
+      popupMessage.innerText = message;
+
+
+
+      if (type === "success") {
+
+        popupIcon.innerHTML = "✅";
+
+      }
+
+      else {
+
+        popupIcon.innerHTML = "❌";
+
+      }
+
+    }
+
+
+
+    function closePopup() {
+
+      const popup = document.getElementById("popup");
+
+      popup.classList.remove("flex");
+
+      popup.classList.add("hidden");
+
+    }
+
+
+
+    // =====================================
+    // LOAD SERIAL NUMBER
+    // =====================================
+
+    async function loadSerialNumber() {
+
+      try {
+
+        console.log("📡 Fetching Serial Number...");
+
+        const response = await fetch(SCRIPT_URL);
+
+        const data = await response.json();
+
+        serialInput.value = data.nextSerialNo;
+
+      }
+
+      catch (error) {
+
+        console.error("❌ Serial Error:", error);
+
+        serialInput.value = 1;
+
+      }
+
+    }
+
+
+
+    loadSerialNumber();
+
+
+
+    // =====================================
+    // FORM SUBMIT
+    // =====================================
+
+    form.addEventListener("submit", async (e) => {
+
+      e.preventDefault();
+
+
+
+      // RESET BORDERS
+      document
+        .querySelectorAll("input, textarea, select")
+        .forEach(field => {
+
+          field.style.borderColor = "rgba(255,255,255,0.08)";
+
+        });
+
+
+
+      const formData = new FormData(form);
+
+
+
+      const data = {
+
+        sno: serialInput.value,
+
+        category: formData.get("category"),
+
+        clientname: formData.get("clientname"),
+
+        doc: formData.get("doc"),
+
+        toc: formData.get("toc"),
+
+        meetagain: formData.get("meetagain"),
+
+        status: formData.get("status"),
+
+        location: formData.get("location"),
+
+        map: formData.get("map"),
+
+        description: formData.get("description")
+
+      };
+
+
+
+      // VALIDATION
+      let hasError = false;
+
+
+
+      Object.keys(data).forEach((key) => {
+
+        const field = document.querySelector(`[name="${key}"]`);
+
+
+
+        if (
+
+          !data[key] &&
+
+          key !== "meetagain" &&
+
+          key !== "map" &&
+
+          key !== "description"
+
+        ) {
+
+          console.error(`❌ ${key} field is required`);
+
+          field.style.borderColor = "red";
+
+          hasError = true;
+
+        }
+
+      });
+
+
+
+      if (hasError) {
+
+        showPopup(
+
+          "error",
+
+          "Validation Error",
+
+          "Please fill all required fields."
+
+        );
+
+        return;
+
+      }
+
+
+
+      // BUTTON LOADING
+      submitBtn.disabled = true;
+
+
+
+      btnText.innerHTML = `
+        <div class="loader"></div>
+      `;
+
+
+
+      // API CALL
+      try {
+
+        console.log("📤 Sending Data:", data);
+
+
+
+        const response = await fetch(SCRIPT_URL, {
+
+          method: "POST",
+
+          body: JSON.stringify(data)
+
+        });
+
+
+
+        console.log("📥 Response Status:", response.status);
+
+
+
+        const result = await response.text();
+
+
+
+        console.log("✅ Server Response:", result);
+
+
+
+        if (!response.ok) {
+
+          throw new Error(`HTTP Error ${response.status}`);
+
+        }
+
+
+
+        showPopup(
+
+          "success",
+
+          "Success",
+
+          "Data submitted successfully to Google Sheets."
+
+        );
+
+
+
+        form.reset();
+
+
+
+        await loadSerialNumber();
+
+      }
+
+      catch (error) {
+
+        console.error("❌ Submission Error:", error);
+
+        console.error("❌ Error Message:", error.message);
+
+
+
+        showPopup(
+
+          "error",
+
+          "Submission Failed",
+
+          error.message
+
+        );
+
+      }
+
+
+
+      // RESET BUTTON
+      submitBtn.disabled = false;
+
+      btnText.innerHTML = "Submit Data";
+
+    });
+
+  </script>
+
+</body>
+
+</html>
