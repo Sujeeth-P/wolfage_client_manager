@@ -191,6 +191,18 @@
 
       </div>
 
+            <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Client Mobile No
+
+        </label>
+
+        <input type="tel" minlength="10" maxlength="15" placeholder="+91 9023442360" name="mobile"
+          required class="w-full p-3 rounded-xl" />
+
+      </div>
 
 
       <!-- DOC -->
@@ -250,6 +262,8 @@
         <select name="status" required class="w-full p-3 rounded-xl">
 
           <option value="">Select Status</option>
+
+          <option>Follow up</option>
 
           <option>Quotation Provided</option>
 
@@ -367,9 +381,7 @@
     // GOOGLE APPS SCRIPT URL
     // =====================================
 
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzTd_XwixGQsTRHHjHyGudY0Tn3NDhbP__PY0dGgdi4jk0m4a_3prG1_Y-M_zfMFQdeSQ/exec"
-
-
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzS2jbA3EHFmbTkTN5i4yhLd2BZI8P1SHneE4X51nSqpxpueQcsfZLg0RMKmQBxHwk-cQ/exec"
     // =====================================
     // ELEMENTS
     // =====================================
@@ -508,6 +520,8 @@
         category: formData.get("category"),
 
         clientname: formData.get("clientname"),
+
+        mobile: formData.get("mobile"),
 
         doc: formData.get("doc"),
 
