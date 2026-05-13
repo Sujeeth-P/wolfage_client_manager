@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Consulting Work Management</title>
+  <title>Client Onboarding Management</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -109,13 +109,13 @@
 
       <h1 class="text-3xl md:text-5xl font-bold leading-tight">
 
-        Consulting Work Management
+        Client Onboarding Management
 
       </h1>
 
       <p class="text-slate-400 mt-3 text-sm md:text-base">
 
-        Client Meeting & Follow-up Tracker
+        Client Onboarding Meeting & Follow-up Tracker
 
       </p>
 
@@ -139,6 +139,27 @@
 
       </div>
 
+
+   <!-- HANDLED BY -->
+     <div>
+
+        <label class="block mb-2 font-semibold">
+
+          Handled By
+
+        </label>
+
+        <select name="handledby" required class="w-full p-3 rounded-xl">
+
+          <option value="">Select Handler</option>
+
+          <option>Sujeeth</option>
+
+          <option>Vishnupriya</option>
+
+        </select>
+
+      </div>
 
 
       <!-- CATEGORY -->
@@ -346,8 +367,7 @@
     // GOOGLE APPS SCRIPT URL
     // =====================================
 
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlf1slJQLwnGSCYDixByXYPj24fwHEuMZz5U5t4jiwfo-t0hRp2js6VGMs2XTKKU_8nA/exec";
-
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzTd_XwixGQsTRHHjHyGudY0Tn3NDhbP__PY0dGgdi4jk0m4a_3prG1_Y-M_zfMFQdeSQ/exec"
 
 
     // =====================================
@@ -482,6 +502,8 @@
       const data = {
 
         sno: serialInput.value,
+
+        handledby: formData.get("handledby"),
 
         category: formData.get("category"),
 
